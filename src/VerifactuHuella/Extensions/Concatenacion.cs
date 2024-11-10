@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VerifactuHuella.Extensions
 {
-    internal class Concatenacion
+    internal static class Concatenacion
     {
         internal static string Ejecutar(IOrderedEnumerable<EnlacePropiedadAtributo> enlaces, object data)
         {
