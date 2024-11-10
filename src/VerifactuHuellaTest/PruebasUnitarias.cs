@@ -8,7 +8,7 @@ namespace VerifactuHuellaTest
         [Fact]
         public void CalcularHuella_RegistroAlta_ArgumentNullException()
         {
-            IHuella _huella = new Huella();
+            Huella _huella = new();
             Assert.Throws<ArgumentNullException>(() => _huella.CalcularHuella<RegistroAlta>(null));
         }
 
@@ -18,7 +18,7 @@ namespace VerifactuHuellaTest
         [Fact]
         public void CalcularHuella_Primer_RegistroAlta()
         {
-            IHuella _huella = new Huella();
+            Huella _huella = new();
             string resultado = _huella.CalcularHuella(new RegistroAlta()
             {
                 IDEmisorFactura = "89890001K",
@@ -40,7 +40,7 @@ namespace VerifactuHuellaTest
         [Fact]
         public void CalcularHuella_Sucesivos_RegistrosAlta()
         {
-            IHuella _huella = new Huella();
+            Huella _huella = new();
             string resultado = _huella.CalcularHuella(new RegistroAlta()
             {
                 IDEmisorFactura = "89890001K",
@@ -63,7 +63,7 @@ namespace VerifactuHuellaTest
         [Fact]
         public void CalcularHuella_Sucesivos_RegistrosAnulacion()
         {
-            IHuella _huella = new Huella();
+            Huella _huella = new();
             string resultado = _huella.CalcularHuella(new RegistroAnulacion()
             {
                 IDEmisorFacturaAnulada = "89890001K",
@@ -82,7 +82,7 @@ namespace VerifactuHuellaTest
         [Fact]
         public void CalcularHuella_Primer_RegistrosEvento()
         {
-            IHuella _huella = new Huella();
+            Huella _huella = new();
             string resultado = _huella.CalcularHuella(new RegistroEvento()
             {
                 NIF = "89890001K",
@@ -105,7 +105,7 @@ namespace VerifactuHuellaTest
         [Fact]
         public void CalcularHuella_Sucesivo_RegistrosEvento()
         {
-            IHuella _huella = new Huella();
+            Huella _huella = new();
             string resultado = _huella.CalcularHuella(new RegistroEvento()
             {
                 NIF = "89890001K",
