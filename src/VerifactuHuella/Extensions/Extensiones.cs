@@ -19,7 +19,7 @@ namespace VerifactuHuella.Extensions
                 })
                 .OrderBy(x => x.Atributo.Orden);
 
-            return new Concatenacion().Ejecutar(propiedades, registro);
+            return Concatenacion.Ejecutar(propiedades, registro);
         }
     }
 }

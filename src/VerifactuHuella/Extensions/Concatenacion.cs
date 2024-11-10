@@ -6,7 +6,7 @@ namespace VerifactuHuella.Extensions
 {
     internal class Concatenacion
     {
-        public string Ejecutar(IOrderedEnumerable<EnlacePropiedadAtributo> enlaces, object data)
+        internal static string Ejecutar(IOrderedEnumerable<EnlacePropiedadAtributo> enlaces, object data)
         {
             StringBuilder resultado = new StringBuilder();
 
