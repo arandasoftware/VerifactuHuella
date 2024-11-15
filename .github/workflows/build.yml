@@ -1,4 +1,4 @@
-name: SonarCloud
+name: Build, Test and Analyze SonarQube
 on:
   push:
     branches:
@@ -51,4 +51,10 @@ jobs:
           dotnet build src/VerifactuHuella.sln --configuration Release --no-incremental
           dotnet-coverage collect "dotnet test src/VerifactuHuella.sln" -f xml -o "coverage.xml"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action/windows@v2
+        if: always()
+        with:
+          files: |
+            test-results\**\*.xml
             
