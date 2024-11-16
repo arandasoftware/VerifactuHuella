@@ -3,7 +3,7 @@ using System.Text;
 
 namespace VerifactuHuella
 {
-    internal static class HuellaHelper
+    public static class HuellaHelper
     {
         public static string CalcularHashSHA256(string valor)
         {

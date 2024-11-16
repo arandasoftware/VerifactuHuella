@@ -36,6 +36,16 @@ public class PruebasUnitarias : PruebasUnitariasBase
         Assert.Throws<ArgumentNullException>(() => _huella.CalcularHuella<RegistroAlta>(null));
     }
 
+    /// <summary>
+    /// Caso 1: primer registro de facturaciÃ³n â€“en este caso, de altaâ€“ en un Sistema InformÃ¡tico de FacturaciÃ³n(SIF)
+    /// </summary>
+    [Fact]
+    public void CalcularHuella_Primer_RegistroAlta_Prueba()
+    {
+        string resultado = HuellaHelper.CalcularHashSHA256("IDEmisorFactura=89890001K&NumSerieFactura=12345678/G33&FechaExpedicionFactura=01-01-2024&TipoFactura=F1&CuotaTotal=12.35&ImporteTotal=123.45&Huella=&FechaHoraHusoGenRegistro=2024-01-01T19:20:30+01:00");
+
+        Assert.Equal("3C464DAF61ACB827C65FDA19F352A4E3BDC2C640E9E9FC4CC058073F38F12F60", resultado);
+    }
 
     /// <summary>
     /// Caso 1: primer registro de facturaciÃ³n â€“en este caso, de altaâ€“ en un Sistema InformÃ¡tico de FacturaciÃ³n(SIF)
