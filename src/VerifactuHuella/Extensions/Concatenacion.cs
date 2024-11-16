@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -12,8 +12,8 @@ namespace VerifactuHuella.Extensions
 
             foreach (var item in enlaces)
             {
-                var nombreCampo = item.Atributo.Nombre;
-                var valorCampo = item.Propiedad.GetValue(data);
+                string nombreCampo = item.Atributo.Nombre;
+                object valorCampo = item.Propiedad.GetValue(data);
 
                 // Verificar si hay un formato en el atributo y aplicarlo si es necesario
                 string valorFormateado;

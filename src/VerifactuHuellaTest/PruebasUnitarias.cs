@@ -1,9 +1,33 @@
+using System.Globalization;
 using VerifactuHuella;
 using VerifactuHuella.Models;
 
 namespace VerifactuHuellaTest;
 
-public class PruebasUnitarias
+public class PruebasUnitariasBase : IDisposable
+{
+    private readonly CultureInfo _originalCulture;
+
+    public PruebasUnitariasBase()
+    {
+        // Guarda la cultura actual para restaurarla después
+        _originalCulture = CultureInfo.CurrentCulture;
+
+        // Establece la nueva cultura
+        var cultureInfo = new CultureInfo("es-ES");
+        CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+        CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+    }
+
+    public void Dispose()
+    {
+        // Restaura la cultura original después de cada prueba
+        CultureInfo.DefaultThreadCurrentCulture = _originalCulture;
+        CultureInfo.DefaultThreadCurrentUICulture = _originalCulture;
+    }
+}
+
+public class PruebasUnitarias : PruebasUnitariasBase
 {
     [Fact]
     public void CalcularHuella_RegistroAlta_ArgumentNullException()
@@ -11,6 +35,7 @@ public class PruebasUnitarias
         Huella _huella = new();
         Assert.Throws<ArgumentNullException>(() => _huella.CalcularHuella<RegistroAlta>(null));
     }
+
 
     /// <summary>
     /// Caso 1: primer registro de facturación –en este caso, de alta– en un Sistema Informático de Facturación(SIF)
