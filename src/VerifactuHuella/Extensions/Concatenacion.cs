@@ -29,7 +29,7 @@ namespace VerifactuHuella.Extensions
                 resultado.Append($"{nombreCampo}={valorFormateado}&");
             }
 
-            //Quitar el último & de la concatenación de campos
+            //Quitar el Ãºltimo & de la concatenaciÃ³n de campos
             string cadenaFinal = resultado.ToString();
 
             return cadenaFinal.Remove(cadenaFinal.LastIndexOf("&"), 1);

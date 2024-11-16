@@ -10,7 +10,7 @@ public class PruebasUnitariasBase : IDisposable
 
     public PruebasUnitariasBase()
     {
-        // Guarda la cultura actual para restaurarla después
+        // Guarda la cultura actual para restaurarla despuÃ©s
         _originalCulture = CultureInfo.CurrentCulture;
 
         // Establece la nueva cultura
@@ -21,7 +21,7 @@ public class PruebasUnitariasBase : IDisposable
 
     public void Dispose()
     {
-        // Restaura la cultura original después de cada prueba
+        // Restaura la cultura original despuÃ©s de cada prueba
         CultureInfo.DefaultThreadCurrentCulture = _originalCulture;
         CultureInfo.DefaultThreadCurrentUICulture = _originalCulture;
     }
@@ -38,7 +38,7 @@ public class PruebasUnitarias : PruebasUnitariasBase
 
 
     /// <summary>
-    /// Caso 1: primer registro de facturación –en este caso, de alta– en un Sistema Informático de Facturación(SIF)
+    /// Caso 1: primer registro de facturaciÃ³n â€“en este caso, de altaâ€“ en un Sistema InformÃ¡tico de FacturaciÃ³n(SIF)
     /// </summary>
     [Fact]
     public void CalcularHuella_Primer_RegistroAlta()
@@ -60,7 +60,7 @@ public class PruebasUnitarias : PruebasUnitariasBase
     }
 
     /// <summary>
-    /// Caso 2: registro de facturación -en este caso de alta- con registro de facturación anterior existente en el SIF (siendo, por tanto, el segundo registro o sucesivo)
+    /// Caso 2: registro de facturaciÃ³n -en este caso de alta- con registro de facturaciÃ³n anterior existente en el SIF (siendo, por tanto, el segundo registro o sucesivo)
     /// </summary>
     [Fact]
     public void CalcularHuella_Sucesivos_RegistrosAlta()
@@ -83,7 +83,7 @@ public class PruebasUnitarias : PruebasUnitariasBase
 
 
     /// <summary>
-    /// Caso 3: registro de facturación –en este caso, de anulación– con registro de facturación anterior existente en el SIF(siendo, por tanto, el segundo registro o sucesivo)
+    /// Caso 3: registro de facturaciÃ³n â€“en este caso, de anulaciÃ³nâ€“ con registro de facturaciÃ³n anterior existente en el SIF(siendo, por tanto, el segundo registro o sucesivo)
     /// </summary>
     [Fact]
     public void CalcularHuella_Sucesivos_RegistrosAnulacion()
