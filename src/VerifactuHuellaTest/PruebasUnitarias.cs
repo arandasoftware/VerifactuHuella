@@ -20,10 +20,6 @@ public class PruebasUnitarias
     [Fact]
     public void CalcularHuella_Primer_RegistroAlta_Prueba()
     {
-        DateTime utcTime = new DateTime(2024, 1, 1, 19, 20, 30, DateTimeKind.Local);
-        TimeZoneInfo rstZone = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
-        DateTime rstTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, rstZone);
-
         string resultado2 = new RegistroAlta()
         {
             IDEmisorFactura = "89890001K",
@@ -33,7 +29,7 @@ public class PruebasUnitarias
             CuotaTotal = 12.35m,
             ImporteTotal = 123.45m,
             Huella = "",
-            FechaHoraHusoGenRegistro = rstTime,
+            FechaHoraHusoGenRegistro = new DateTimeOffset(2024, 1, 1, 19, 20, 30, TimeSpan.FromHours(1)),
         }.ConcatenaCampos();
 
         Assert.Equal("IDEmisorFactura=89890001K&NumSerieFactura=12345678/G33&FechaExpedicionFactura=01-01-2024&TipoFactura=F1&CuotaTotal=12.35&ImporteTotal=123.45&Huella=&FechaHoraHusoGenRegistro=2024-01-01T19:20:30+01:00", resultado2);
