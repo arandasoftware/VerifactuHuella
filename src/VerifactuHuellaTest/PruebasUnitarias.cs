@@ -1,5 +1,6 @@
 using System.Globalization;
 using VerifactuHuella;
+using VerifactuHuella.Extensions;
 using VerifactuHuella.Models;
 
 namespace VerifactuHuellaTest;
@@ -42,9 +43,19 @@ public class PruebasUnitarias : PruebasUnitariasBase
     [Fact]
     public void CalcularHuella_Primer_RegistroAlta_Prueba()
     {
-        string resultado = HuellaHelper.CalcularHashSHA256("IDEmisorFactura=89890001K&NumSerieFactura=12345678/G33&FechaExpedicionFactura=01-01-2024&TipoFactura=F1&CuotaTotal=12.35&ImporteTotal=123.45&Huella=&FechaHoraHusoGenRegistro=2024-01-01T19:20:30+01:00");
+        string resultado2 = new RegistroAlta()
+        {
+            IDEmisorFactura = "89890001K",
+            NumSerieFactura = "12345678/G33",
+            FechaExpedicionFactura = new DateTime(2024, 1, 1, 5, 0, 30, DateTimeKind.Local),
+            TipoFactura = "F1",
+            CuotaTotal = 12.35m,
+            ImporteTotal = 123.45m,
+            Huella = "",
+            FechaHoraHusoGenRegistro = new DateTime(2024, 1, 1, 19, 20, 30, DateTimeKind.Local),
+        }.ConcatenaCampos();
 
-        Assert.Equal("3C464DAF61ACB827C65FDA19F352A4E3BDC2C640E9E9FC4CC058073F38F12F60", resultado);
+        Assert.Equal("IDEmisorFactura=89890001K&NumSerieFactura=12345678/G33&FechaExpedicionFactura=01-01-2024&TipoFactura=F1&CuotaTotal=12.35&ImporteTotal=123.45&Huella=&FechaHoraHusoGenRegistro=2024-01-01T19:20:30+01:00", resultado2);
     }
 
     /// <summary>
