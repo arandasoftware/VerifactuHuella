@@ -5,30 +5,7 @@ using VerifactuHuella.Models;
 
 namespace VerifactuHuellaTest;
 
-public class PruebasUnitariasBase : IDisposable
-{
-    private readonly CultureInfo _originalCulture;
-
-    public PruebasUnitariasBase()
-    {
-        // Guarda la cultura actual para restaurarla despuÃ©s
-        _originalCulture = CultureInfo.CurrentCulture;
-
-        // Establece la nueva cultura
-        var cultureInfo = new CultureInfo("es-ES");
-        CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
-        CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
-    }
-
-    public void Dispose()
-    {
-        // Restaura la cultura original despuÃ©s de cada prueba
-        CultureInfo.DefaultThreadCurrentCulture = _originalCulture;
-        CultureInfo.DefaultThreadCurrentUICulture = _originalCulture;
-    }
-}
-
-public class PruebasUnitarias : PruebasUnitariasBase
+public class PruebasUnitarias
 {
     [Fact]
     public void CalcularHuella_RegistroAlta_ArgumentNullException()
@@ -43,6 +20,10 @@ public class PruebasUnitarias : PruebasUnitariasBase
     [Fact]
     public void CalcularHuella_Primer_RegistroAlta_Prueba()
     {
+        DateTime utcTime = new DateTime(2024, 1, 1, 19, 20, 30, DateTimeKind.Local);
+        TimeZoneInfo rstZone = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+        DateTime rstTime = TimeZoneInfo.ConvertTimeFromUtc(utcTime, rstZone);
+
         string resultado2 = new RegistroAlta()
         {
             IDEmisorFactura = "89890001K",
@@ -52,7 +33,7 @@ public class PruebasUnitarias : PruebasUnitariasBase
             CuotaTotal = 12.35m,
             ImporteTotal = 123.45m,
             Huella = "",
-            FechaHoraHusoGenRegistro = new DateTime(2024, 1, 1, 19, 20, 30, DateTimeKind.Local),
+            FechaHoraHusoGenRegistro = rstTime,
         }.ConcatenaCampos();
 
         Assert.Equal("IDEmisorFactura=89890001K&NumSerieFactura=12345678/G33&FechaExpedicionFactura=01-01-2024&TipoFactura=F1&CuotaTotal=12.35&ImporteTotal=123.45&Huella=&FechaHoraHusoGenRegistro=2024-01-01T19:20:30+01:00", resultado2);
