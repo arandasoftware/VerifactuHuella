@@ -30,6 +30,6 @@ namespace VerifactuHuella.Models
         public string HuellaEvento { get; set; }
 
         [Campo("FechaHoraHusoGenEvento", 9, "yyyy-MM-ddTHH:mm:ssK")]
-        public DateTime FechaHoraHusoGenEvento { get; set; }
+        public DateTimeOffset FechaHoraHusoGenEvento { get; set; }
     }
 }
