@@ -1,4 +1,4 @@
-﻿namespace VerifactuHuella
+namespace VerifactuHuella
 {
     public interface IHuella
     {

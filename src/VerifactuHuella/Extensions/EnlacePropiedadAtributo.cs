@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using VerifactuHuella.Models;
 
 namespace VerifactuHuella.Extensions

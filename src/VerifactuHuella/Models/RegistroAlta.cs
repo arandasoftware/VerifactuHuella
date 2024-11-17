@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace VerifactuHuella.Models
 {
@@ -26,6 +26,6 @@ namespace VerifactuHuella.Models
         public string Huella { get; set; }
 
         [Campo("FechaHoraHusoGenRegistro", 8, "yyyy-MM-ddTHH:mm:ssK")]
-        public DateTime FechaHoraHusoGenRegistro { get; set; }
+        public DateTimeOffset FechaHoraHusoGenRegistro { get; set; }
     }
 }

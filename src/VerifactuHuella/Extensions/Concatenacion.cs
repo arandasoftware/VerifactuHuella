@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -12,8 +12,8 @@ namespace VerifactuHuella.Extensions
 
             foreach (var item in enlaces)
             {
-                var nombreCampo = item.Atributo.Nombre;
-                var valorCampo = item.Propiedad.GetValue(data);
+                string nombreCampo = item.Atributo.Nombre;
+                object valorCampo = item.Propiedad.GetValue(data);
 
                 // Verificar si hay un formato en el atributo y aplicarlo si es necesario
                 string valorFormateado;
@@ -29,7 +29,7 @@ namespace VerifactuHuella.Extensions
                 resultado.Append($"{nombreCampo}={valorFormateado}&");
             }
 
-            //Quitar el último & de la concatenación de campos
+            //Quitar el Ãºltimo & de la concatenaciÃ³n de campos
             string cadenaFinal = resultado.ToString();
 
             return cadenaFinal.Remove(cadenaFinal.LastIndexOf("&"), 1);
