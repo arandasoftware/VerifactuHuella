@@ -2,6 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Title>VERI*FACTU HUELLA</Title>
+    <Version>1.0.1</Version>
+    <Description>VERI*FACTU HUELLA</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/arandasoftware/VerifactuHuella</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/arandasoftware/VerifactuHuella</PackageProjectUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
   
 </Project>
